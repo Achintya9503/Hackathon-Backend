@@ -17,9 +17,9 @@ public class Liked {
 	@Column(nullable=false)
 	private long video_id;
 	@Column(nullable=true)
-	private boolean is_liked;
+	private boolean liked;
 	@Column(nullable=true)
-	private boolean is_disliked;
+	private boolean disliked;
 	
 	public Liked() {
 		

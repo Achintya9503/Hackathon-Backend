@@ -14,7 +14,7 @@ public class VideoController {
 		this.videoService = videoService;
 	}
 
-	@GetMapping("/getUsers")
+	@GetMapping("/getvideos")
 	public Iterable<Video> list(){
 		System.out.println("List:");
 		return this.videoService.list();
