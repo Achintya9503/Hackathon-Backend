@@ -25,10 +25,12 @@ public class User {
 	private String email;
 	@Column(nullable=false)
 	private String password;
+	@Column(nullable=false)
+	private String full_name;
 	@Column(unique=true)
 	private String device_access_token;
 	@Column(unique=true)
-	private String mobile;
+	private String mobile_no;
 	
 	public User() {
 		
