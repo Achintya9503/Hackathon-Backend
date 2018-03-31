@@ -1,9 +1,6 @@
 package com.wowza.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,13 +12,14 @@ import lombok.Data;
 public class Friends_mapping {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long s_no;
 	@Column(nullable=false)
 	private long user_id;
 	@Column(nullable=false)
-	private long user_id_1;
+	private long friend_id;
 	@Column(nullable=false)
-	private boolean is_pending;
+	private boolean pending;
 
 	public Friends_mapping() {
 		

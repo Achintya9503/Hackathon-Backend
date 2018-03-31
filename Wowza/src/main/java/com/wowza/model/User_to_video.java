@@ -19,7 +19,7 @@ public class User_to_video {
 	@Column(nullable=false)
 	private long user_id;
 	@Column(nullable=false)
-	private boolean is_owner;
+	private boolean owner;
 	
 	public User_to_video() {
 		
