@@ -20,7 +20,9 @@ public class Friends_mapping {
 	private long user_id;
 	@Column(nullable=false)
 	private long user_id_1;
-	
+	@Column(nullable=false)
+	private boolean is_pending;
+
 	public Friends_mapping() {
 		
 	}
