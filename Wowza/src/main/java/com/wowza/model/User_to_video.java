@@ -1,15 +1,12 @@
 package com.wowza.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
+@Table (name="user_to_video")
 @Data
 @AllArgsConstructor
 public class User_to_video {
