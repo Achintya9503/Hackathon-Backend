@@ -5,8 +5,8 @@ import com.wowza.model.Liked;
 
 public interface LikedService {
 	
-	public Iterable<Liked> list();
+	Iterable<Liked> list();
 	
-	public Liked save(Liked liked);
+	Liked save(Liked liked);
 
 }

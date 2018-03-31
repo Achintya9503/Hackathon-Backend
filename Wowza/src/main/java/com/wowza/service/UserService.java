@@ -4,8 +4,8 @@ import com.wowza.model.User;
 
 public interface UserService {
 	
-	public Iterable<User> list();
+	Iterable<User> list();
 	
-	public User save(User user);
+	User save(User user);
 
 }
