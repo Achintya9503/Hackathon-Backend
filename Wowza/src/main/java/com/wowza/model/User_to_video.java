@@ -13,6 +13,8 @@ public class User_to_video {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	private long s_no;
+	@Column(nullable=false)
 	private long video_id;
 	@Column(nullable=false)
 	private long user_id;
