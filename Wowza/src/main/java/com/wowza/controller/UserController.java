@@ -10,7 +10,7 @@ import com.wowza.model.User;
 import com.wowza.service.UserService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/user")
 public class UserController {
 	
 	private UserService userService;
@@ -19,7 +19,7 @@ public class UserController {
 		this.userService = userService;
 	}
 
-	@GetMapping("/Users")
+	@GetMapping("/getUsers")
 	public Iterable<User> list(){
 		System.out.println("List:");
 		return this.userService.list();

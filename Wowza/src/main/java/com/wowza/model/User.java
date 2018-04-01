@@ -11,7 +11,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Entity
-@Table(name="User")
+@Table(name="user")
 @Data
 @AllArgsConstructor
 public class User {
@@ -19,16 +19,18 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long user_id;
-	@Column(unique=true, nullable=false)
+	@Column(unique=true, nullable=true)
 	private String username;
 	@Column(unique=true, nullable=false)
 	private String email;
-	@Column(nullable=false)
+	@Column(nullable=true)
 	private String password;
-	@Column(unique=true)
+	@Column(nullable=false)
+	private String full_name;
+	@Column(unique=true, nullable=true)
 	private String device_access_token;
-	@Column(unique=true)
-	private String mobile;
+	@Column(unique=true, nullable=true)
+	private String mobile_no;
 	
 	public User() {
 		
