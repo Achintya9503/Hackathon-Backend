@@ -12,7 +12,7 @@ public interface UserService {
 	
 	Response save(User user);
 	
-	ArrayList<User> getUsersList(String user_id);
+	Iterable<User> getUsersList(String user_id);
 	
 	User getUserByID(String userId);
 
