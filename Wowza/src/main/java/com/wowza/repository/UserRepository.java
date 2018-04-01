@@ -8,6 +8,6 @@ import com.wowza.model.User;
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
 	
-	public User findByUId(String user_id);
+	public User findByuid(String user_id);
 
 }

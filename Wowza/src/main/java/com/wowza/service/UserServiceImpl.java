@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.wowza.model.Friends_mapping;
 import com.wowza.model.User;
-import com.wowza.repository.Friends_mappingRepository;
 import com.wowza.repository.UserRepository;
 
 @Service
@@ -46,8 +44,8 @@ public class UserServiceImpl implements UserService{
 		Iterable<User> lst = this.userRepository.findAll();
 		ArrayList<String> userList = new ArrayList<String>();
 		for(User user:lst) {
-			System.out.println(user.getUId());
-			userList.add(user.getUId());
+			System.out.println(user.getUid());
+			userList.add(user.getUid());
 		}
 		System.out.println(userList.toString());
 		userList.remove(user_id);
@@ -74,7 +72,7 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public User getUserByID(String user_id) {
-		return this.userRepository.findByUId(user_id);
+		return this.userRepository.findByuid(user_id);
 	}
 
 }
