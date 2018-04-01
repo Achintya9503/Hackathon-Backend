@@ -7,5 +7,7 @@ import com.wowza.model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, Long> {
+	
+	public User findByUserId(long user_id);
 
 }

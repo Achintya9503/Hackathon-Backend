@@ -2,15 +2,18 @@ package com.wowza.service;
 
 import com.wowza.model.User_to_video;
 import com.wowza.repository.User_to_videoRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class User_to_videoServiceImpl implements User_to_videoService{
+	
+	@Autowired
+	User_to_videoRepository user_to_videoRepository;
 
-	private User_to_videoRepository user_to_videoRepository;
-
-	public User_to_videoServiceImpl(User_to_videoRepository user_to_videoRepository) {
-		this.user_to_videoRepository=user_to_videoRepository;
+	public User_to_videoServiceImpl() {
+		
 	}
 
 	@Override

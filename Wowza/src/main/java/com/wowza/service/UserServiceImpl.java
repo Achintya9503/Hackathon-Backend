@@ -1,17 +1,28 @@
 package com.wowza.service;
 
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wowza.model.Friends_mapping;
 import com.wowza.model.User;
+import com.wowza.repository.Friends_mappingRepository;
 import com.wowza.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService{
 	
-	private UserRepository userRepository;
+	@Autowired
+	UserRepository userRepository;
 	
-	public UserServiceImpl(UserRepository userRepository) {
-		this.userRepository=userRepository;
+//	private Friends_mappingRepository friends_mappingRepository;
+//	private Friends_mappingServiceImpl friendsService = new Friends_mappingServiceImpl(friends_mappingRepository);
+	@Autowired
+	Friends_mappingServiceImpl friendsService; 
+	
+	public UserServiceImpl() {
+		
 	}
 
 	@Override
@@ -26,6 +37,44 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User save(User user) {
 		return this.userRepository.save(user);
+	}
+
+	@Override
+	public ArrayList<User> getUsersList(long user_id) {
+		ArrayList<User> listOfUsers = new ArrayList<User>();
+		try {
+		Iterable<User> lst = this.userRepository.findAll();
+		ArrayList<Long> userList = new ArrayList<Long>();
+		for(User user:lst) {
+			System.out.println(user.getUserId());
+			userList.add(user.getUserId());
+		}
+		System.out.println(userList.toString());
+		userList.remove(user_id);
+		ArrayList<User> friendsList = friendsService.getFriendsListByUserId(user_id);
+		System.out.println(friendsList.toString());
+		for(User friends :friendsList) {
+			System.out.println(friends.getUserId());
+			userList.remove(friends.getUserId());
+		}
+		System.out.println(userList.toString());
+		
+		for(Long id:userList) {
+			User noFriend = getUserByID(id);
+			listOfUsers.add(noFriend);
+		}
+		System.out.println(listOfUsers.toString());
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		return listOfUsers;
+		
+	}
+
+	@Override
+	public User getUserByID(long user_id) {
+		return this.userRepository.findByUserId(user_id);
 	}
 
 }

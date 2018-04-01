@@ -14,10 +14,10 @@ public class Friends_mapping {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long s_no;
-	@Column(nullable=false)
-	private long user_id;
-	@Column(nullable=false)
-	private long friend_id;
+	@Column(nullable=false, name="user_id")
+	private long userId;
+	@Column(nullable=false, name="friend_id")
+	private long friendId;
 	@Column(nullable=false)
 	private boolean pending;
 

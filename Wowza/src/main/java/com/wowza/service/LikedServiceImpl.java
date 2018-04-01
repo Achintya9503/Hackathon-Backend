@@ -2,15 +2,17 @@ package com.wowza.service;
 
 import com.wowza.model.Liked;
 import com.wowza.repository.LikedRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LikedServiceImpl implements LikedService{
+	
+	@Autowired
+	LikedRepository likedRepository;
 
-	private LikedRepository likedRepository;
-
-	public LikedServiceImpl(LikedRepository likedRepository) {
-		this.likedRepository=likedRepository;
+	public LikedServiceImpl() {
 	}
 
 	@Override

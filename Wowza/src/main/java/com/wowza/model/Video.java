@@ -16,21 +16,22 @@ public class Video {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long video_id;
-	@Column(nullable=false)
-	private String video_name;
-	@Column(nullable=false)
+	@Column(nullable=false, name="video_id")
+	private long videoId;
+	@Column(nullable=false, name="video_name")
+	private String videoName;
+	@Column(nullable=false, name="video_start_time")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
-	private Timestamp video_start_time;
-	@Column(nullable=true)
+	private Timestamp videoStartTime;
+	@Column(nullable=true, name="video_end_time")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
-	private Timestamp video_end_time;
+	private Timestamp videoEndTime;
 	@Column(nullable=false)
 	private boolean available;
 	@Column(nullable=false)
 	private boolean live;
-	@Column(nullable=true)
-	private long video_reference_id;
+	@Column(nullable=true, name="video_reference_id")
+	private long videoReferenceId;
 	public Video() {
 		
 	}

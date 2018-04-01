@@ -18,19 +18,20 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long user_id;
+	@Column(name="user_id")
+	private long userId;
 	@Column(unique=true, nullable=true)
 	private String username;
 	@Column(unique=true, nullable=false)
 	private String email;
 	@Column(nullable=true)
 	private String password;
-	@Column(nullable=false)
-	private String full_name;
-	@Column(unique=true, nullable=true)
-	private String device_access_token;
-	@Column(unique=true, nullable=true)
-	private String mobile_no;
+	@Column(nullable=false, name="full_name")
+	private String fullName;
+	@Column(unique=true, nullable=true, name="device_access_token")
+	private String deviceAccessToken;
+	@Column(unique=true, nullable=true, name="mobile_no")
+	private String mobileNo;
 	
 	public User() {
 		

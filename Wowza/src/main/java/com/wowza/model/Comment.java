@@ -16,18 +16,19 @@ public class Comment {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private long comment_id;
-	@Column(nullable=false)
-	private long user_id;
-	@Column(nullable=false)
-	private long video_id;
-	@Column(nullable=false)
-	private long comment_number;
+	@Column(nullable=false ,name="comment_id")
+	private long commentId;
+	@Column(nullable=false, name="user_id")
+	private long userId;
+	@Column(nullable=false, name="video_id")
+	private long videoId;
+	@Column(nullable=false, name="comment_number")
+	private long commentNumber;
 	@Column(nullable=false)
 	private String comment;
-	@Column(nullable=false)
+	@Column(nullable=false, name="comment_time")
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
-	private Timestamp comment_time;
+	private Timestamp commentTime;
 	
 	public Comment() {
 		

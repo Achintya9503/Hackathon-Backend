@@ -2,15 +2,18 @@ package com.wowza.service;
 
 import com.wowza.model.Comment;
 import com.wowza.repository.CommentRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CommentServiceImpl implements CommentService{
 	
-	private CommentRepository commentRepository;
+	@Autowired
+	CommentRepository commentRepository;
 	
-	public CommentServiceImpl(CommentRepository commentRepository) {
-		this.commentRepository=commentRepository;
+	public CommentServiceImpl() {
+		
 	}
 
 	@Override
