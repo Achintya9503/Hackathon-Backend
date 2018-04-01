@@ -12,8 +12,8 @@ public interface Friends_mappingService {
 	
 	Friends_mapping save(Friends_mapping friends_mapping);
 
-	Iterable<Friends> getFriendList(long user_id);
+	Iterable<Friends> getFriendList(String user_id);
 
-	ArrayList<User> getFriendsListByUserId(long user_id);
+	ArrayList<User> getFriendsListByUserId(String user_id);
 
 }

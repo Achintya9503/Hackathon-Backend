@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wowza.model.Friends_mapping;
 import com.wowza.model.User;
 import com.wowza.service.Friends_mappingService;
+import com.wowza.service.Util;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,7 +17,9 @@ public class Friends_mappingController {
 
 	private Friends_mappingService friends_mappingService;
 
-
+	@Autowired
+	Util util;
+	
 	public Friends_mappingController(Friends_mappingService friends_mappingService) {
 		this.friends_mappingService = friends_mappingService;
 	}
@@ -26,16 +30,20 @@ public class Friends_mappingController {
 		return this.friends_mappingService.list();
 	}
 
-	@PostMapping("/save")
-	public Friends_mapping saveTask(@RequestBody Friends_mapping friends_mapping) {
-		return this.friends_mappingService.save(friends_mapping);
+	@PostMapping("/sendfriendrequest/{tokenId}/{friend_id}")
+	public Friends_mapping saveTask(@PathVariable("tokenId") String tokenId,@PathVariable("friend_id") String friend_id) throws InterruptedException {
+		Friends_mapping friendMapping = new Friends_mapping();
+		String user_id = util.getUId(tokenId);
+		friendMapping.setUserId(user_id);
+		friendMapping.setFriendId(friend_id);
+		return this.friends_mappingService.save(friendMapping);
 	}
 
-	@GetMapping(value = "/getFriendList/{user_id}")
+	@GetMapping(value = "/getFriendList/{tokenId}")
 	@ResponseBody
 	@JsonIgnoreProperties
-	public ArrayList<User> getFriendList(@PathVariable("user_id") long user_id) {
-
+	public ArrayList<User> getFriendList(@PathVariable("tokenId") String tokenId) throws InterruptedException {
+		String user_id = util.getUId(tokenId);
 		return  this.friends_mappingService.getFriendsListByUserId(user_id);
 
 	}

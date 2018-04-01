@@ -40,14 +40,14 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public ArrayList<User> getUsersList(long user_id) {
+	public ArrayList<User> getUsersList(String user_id) {
 		ArrayList<User> listOfUsers = new ArrayList<User>();
 		try {
 		Iterable<User> lst = this.userRepository.findAll();
-		ArrayList<Long> userList = new ArrayList<Long>();
+		ArrayList<String> userList = new ArrayList<String>();
 		for(User user:lst) {
-			System.out.println(user.getUserId());
-			userList.add(user.getUserId());
+			System.out.println(user.getUId());
+			userList.add(user.getUId());
 		}
 		System.out.println(userList.toString());
 		userList.remove(user_id);
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService{
 		}
 		System.out.println(userList.toString());
 		
-		for(Long id:userList) {
+		for(String id:userList) {
 			User noFriend = getUserByID(id);
 			listOfUsers.add(noFriend);
 		}
@@ -73,8 +73,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User getUserByID(long user_id) {
-		return this.userRepository.findByUserId(user_id);
+	public User getUserByID(String user_id) {
+		return this.userRepository.findByUId(user_id);
 	}
 
 }

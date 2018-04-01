@@ -47,7 +47,7 @@ public class Friends_mappingServiceImpl implements Friends_mappingService{
 
 
 	@Override
-	public ArrayList<User> getFriendsListByUserId(long user_id){
+	public ArrayList<User> getFriendsListByUserId(String user_id){
 		ArrayList<User> friendsList = new ArrayList<User>();
 		try {
 		Iterable<Friends_mapping> lst = this.friends_mappingRepository.findByUserId(user_id);
@@ -80,7 +80,7 @@ public class Friends_mappingServiceImpl implements Friends_mappingService{
 	}
 
 	@Override
-	public Iterable<Friends> getFriendList(long user_id) {
+	public Iterable<Friends> getFriendList(String user_id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

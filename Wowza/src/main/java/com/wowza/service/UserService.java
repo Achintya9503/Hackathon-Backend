@@ -11,8 +11,8 @@ public interface UserService {
 	
 	User save(User user);
 	
-	ArrayList<User> getUsersList(long user_id);
+	ArrayList<User> getUsersList(String user_id);
 	
-	User getUserByID(long user_id);
+	User getUserByID(String userId);
 
 }

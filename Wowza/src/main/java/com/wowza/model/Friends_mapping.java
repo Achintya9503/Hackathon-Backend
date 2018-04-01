@@ -15,10 +15,10 @@ public class Friends_mapping {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long s_no;
 	@Column(nullable=false, name="user_id")
-	private long userId;
+	private String userId;
 	@Column(nullable=false, name="friend_id")
-	private long friendId;
-	@Column(nullable=false)
+	private String friendId;
+	@Column(nullable=true)
 	private boolean pending;
 
 	public Friends_mapping() {

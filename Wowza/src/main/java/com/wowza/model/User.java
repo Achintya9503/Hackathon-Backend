@@ -32,6 +32,11 @@ public class User {
 	private String deviceAccessToken;
 	@Column(unique=true, nullable=true, name="mobile_no")
 	private String mobileNo;
+	@Column(unique=true, nullable=false, name="uid")
+	private String uId;
+	@Column(nullable=false, name="streaming")
+	private String streaming;
+	
 	
 	public User() {
 		

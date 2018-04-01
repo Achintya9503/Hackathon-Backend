@@ -7,6 +7,6 @@ import com.wowza.model.Friends_mapping;
 @Repository
 public interface Friends_mappingRepository extends CrudRepository<Friends_mapping, Long> {
 
-	Iterable<Friends_mapping> findByUserId(long user_id);
-	Iterable<Friends_mapping> findByFriendId(long user_id);
+	Iterable<Friends_mapping> findByUserId(String user_id);
+	Iterable<Friends_mapping> findByFriendId(String user_id);
 }
