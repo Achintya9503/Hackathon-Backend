@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.wowza.model.Response;
 import com.wowza.model.User;
 import com.wowza.repository.UserRepository;
 
@@ -33,8 +34,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User save(User user) {
-		return this.userRepository.save(user);
+	public Response save(User user) {
+		this.userRepository.save(user);
+		return new Response(200, "ok");
 	}
 
 	@Override

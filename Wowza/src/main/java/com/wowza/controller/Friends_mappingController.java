@@ -2,6 +2,7 @@ package com.wowza.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.wowza.model.Friends_mapping;
+import com.wowza.model.Response;
 import com.wowza.model.User;
 import com.wowza.service.Friends_mappingService;
 import com.wowza.service.Util;
@@ -9,10 +10,11 @@ import com.wowza.service.Util;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/friendsMapping")
+@RequestMapping("/api/friends")
 public class Friends_mappingController {
 
 	private Friends_mappingService friends_mappingService;
@@ -24,25 +26,26 @@ public class Friends_mappingController {
 		this.friends_mappingService = friends_mappingService;
 	}
 
-	@GetMapping("/getFriends")
-	public Iterable<Friends_mapping> list() {
-		System.out.println("List:");
-		return this.friends_mappingService.list();
-	}
+//	@GetMapping("/getFriends")
+//	public Iterable<Friends_mapping> list() {
+//		System.out.println("List:");
+//		return this.friends_mappingService.list();
+//	}
 
-	@PostMapping("/sendfriendrequest/{tokenId}/{friend_id}")
-	public Friends_mapping saveTask(@PathVariable("tokenId") String tokenId,@PathVariable("friend_id") String friend_id) throws InterruptedException {
+	@PostMapping("/add/{friend_id}")
+	public Response saveTask(@RequestHeader(value="token") String tokenId,@PathVariable("friend_id") String friend_id) throws InterruptedException {
 		Friends_mapping friendMapping = new Friends_mapping();
 		String user_id = util.getUId(tokenId);
 		friendMapping.setUserId(user_id);
 		friendMapping.setFriendId(friend_id);
-		return this.friends_mappingService.save(friendMapping);
+		this.friends_mappingService.save(friendMapping);
+		return new Response(200,"ok");
 	}
 
-	@GetMapping(value = "/getFriendList/{tokenId}")
+	@GetMapping(value = "")
 	@ResponseBody
 	@JsonIgnoreProperties
-	public ArrayList<User> getFriendList(@PathVariable("tokenId") String tokenId) throws InterruptedException {
+	public ArrayList<User> getFriendList(@RequestHeader(value="token") String tokenId) throws InterruptedException {
 		String user_id = util.getUId(tokenId);
 		return  this.friends_mappingService.getFriendsListByUserId(user_id);
 
