@@ -1,8 +1,8 @@
 package com.wowza;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,32 +18,24 @@ import com.google.firebase.FirebaseOptions;
 @EntityScan("com.wowza.model")
 public class WowzaApplication {
 
-	public static void main(String[] args) throws IOException,IllegalStateException {
+	public static void main(String[] args) throws IOException, IllegalStateException {
 		SpringApplication.run(WowzaApplication.class, args);
-		FileInputStream serviceAccount;
+		InputStream serviceAccount;
+		// serviceAccount = new
+		// FileInputStream("src/main/resources/mufaddal_serviceJson.json");
+		serviceAccount = WowzaApplication.class.getResourceAsStream("/mufaddal_serviceJson.json");
+		FirebaseOptions options;
 		try {
-			serviceAccount = new FileInputStream("src/main/resources/mufaddal_serviceJson.json");
-			FirebaseOptions options;
-			try {
-				options = new FirebaseOptions.Builder()
-					    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-					    .build();
-				FirebaseApp.initializeApp(options);
-			} catch (IllegalStateException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-				
-		} catch (FileNotFoundException e) {
+			options = new FirebaseOptions.Builder().setCredentials(GoogleCredentials.fromStream(serviceAccount))
+					.build();
+			FirebaseApp.initializeApp(options);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		
 	}
 }

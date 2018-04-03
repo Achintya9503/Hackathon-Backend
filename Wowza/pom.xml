@@ -6,7 +6,6 @@
 	<groupId>com.wowza</groupId>
 	<artifactId>Wowza</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
 	<name>Wowza</name>
 	<description>Wowza project for PCS</description>
